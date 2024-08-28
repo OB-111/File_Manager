@@ -10,12 +10,29 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const customer_entity_1 = require("./entities/customer.entity");
+const user_entity_1 = require("./entities/user.entity");
+const file_module_1 = require("./api/file/file.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'mariadb',
+                host: 'localhost',
+                port: 3306,
+                username: 'ezuser',
+                password: 'ezpass',
+                database: 'excel_upload_tasks',
+                entities: [user_entity_1.User, File, customer_entity_1.Customer],
+                synchronize: true,
+            }),
+            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, File, customer_entity_1.Customer]),
+            file_module_1.FileModule
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

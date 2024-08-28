@@ -18,6 +18,6 @@ export class Customer {
   @Column()
   c_phone: string;
 
-  @ManyToOne(() => File, (file) => file.f_id)
-  f_id: File;
+  // @ManyToOne(() => File, (file) => file.f_id)
+  // f_id: File;
 }

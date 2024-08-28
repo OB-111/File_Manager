@@ -13,7 +13,19 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS files
 (
 
-    f_id    INT AUTO_INCREMENT PRIMARY KEY
+    f_id    INT AUTO_INCREMENT PRIMARY KEY,
+
+    f_name VARCHAR(255) NOT NULL,
+
+    f_path VARCHAR(255) NOT NULL,
+
+    f_uploaded_at DATE NOT NULL,
+    
+    f_status VARCHAR(255) NOT NULL,
+    
+    f_user INT,
+
+    FOREIGN KEY(f_user) REFERENCES users(u_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS customers

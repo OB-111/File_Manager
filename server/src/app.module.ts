@@ -24,7 +24,7 @@ import { FileModule } from './api/file/file.module';
       synchronize: true, // Set to false in production
     }),
     TypeOrmModule.forFeature([User, File, Customer]),
-    FileModule
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

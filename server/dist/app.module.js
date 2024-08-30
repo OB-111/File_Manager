@@ -31,7 +31,7 @@ exports.AppModule = AppModule = __decorate([
                 synchronize: true,
             }),
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, File, customer_entity_1.Customer]),
-            file_module_1.FileModule
+            file_module_1.FileModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

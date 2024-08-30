@@ -1,7 +1,18 @@
+import { InjectRepository } from '@nestjs/typeorm';
+import { FileEntity } from 'src/entities/file.entity';
+import { Repository } from 'typeorm';
+import { RedisService } from '../redis/redis.service';
+
 export class FileService {
   private readonly MAX_FILES = 5;
+  constructor(
+    @InjectRepository(FileEntity)
+    private readonly fileRepository: Repository<FileEntity>,
+    private readonly redisService: RedisService,
+  ) {}
 
-  check(files: Array<Express.Multer.File>) {
-    return files;
-  }
+  // Handle multiple file uploads
+  async uploadFiles(files: Express.Multer.File[]): Promise<void> {}
+  
+
 }

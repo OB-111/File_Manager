@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { File } from './file.entity';
+import { FileEntity } from './file.entity';
 
 @Entity()
 export class Customer {
@@ -18,6 +18,6 @@ export class Customer {
   @Column()
   c_phone: string;
 
-  // @ManyToOne(() => File, (file) => file.f_id)
-  // f_id: File;
+  // @ManyToOne(() => FileEntity, (file) => file.f_id)
+  // f_ids: FileEntity;
 }

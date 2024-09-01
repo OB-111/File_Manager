@@ -4,9 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   ManyToOne,
-} from 'typeorm';
-import { User } from './user.entity';
+} from "typeorm";
+import { UserEntity } from "./user.entity";
 
+@Entity({ schema: "nesttest", name: "files" })
 @Entity()
 export class FileEntity {
   @PrimaryGeneratedColumn()
@@ -22,9 +23,9 @@ export class FileEntity {
   @CreateDateColumn()
   f_uploaded_at: Date;
 
-  @ManyToOne(() => User, (user) => user.u_id)
-  f_user: User;
+  @ManyToOne(() => UserEntity, (user) => user.u_id)
+  f_user: UserEntity;
 
-  @Column({ default: 'pending' })
+  @Column({ default: "pending" })
   f_status: string;
 }

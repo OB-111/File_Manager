@@ -1,12 +1,15 @@
-import { User } from "src/entities/user.entity";
+import { Controller, Get } from "@nestjs/common";
 import { UserService } from "./user.service";
-import { Get } from "@nestjs/common";
+import { AppConfig } from "src/config/app.config";
+import { IUserModel } from "./user.model";
 
+@Controller(AppConfig.apiUrl.users)
 export class UserContoller {
-    constructor(private readonly userService: UserService){}
+  constructor(private readonly userService: UserService) {}
 
-    @Get('')
-    getUsers() {
-        return this.userService.getAllUsers();
-    }
+  @Get()
+  async getUsers() {
+    const users = await this.userService.getAllUsers();
+    return users;
+  }
 }

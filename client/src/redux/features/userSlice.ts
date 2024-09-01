@@ -1,26 +1,23 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { userModel } from "../models/user.model";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IUserModel } from "../models/user.model";
 
-const initialState: userModel = {
-  u_id: '',
-  u_name:''
-}
+const initialState: { selectedUser: IUserModel } = {
+  selectedUser: localStorage["currentUser"]
+    ? JSON.parse(localStorage["currentUser"] || "")
+    : {},
+};
 
 const userSlice = createSlice({
-    name:'users',
-    initialState:initialState,
-    
-    // actions to change the state
-    reducers:{
-      onLogin: (state, action: PayloadAction<userModel>) =>{
-        state.u_id =action.payload.u_id;
-        state.u_name =action.payload.u_name;
-      }, 
+  name: "users",
+  initialState: initialState,
 
-    }
-})
+  // actions to change the state
+  reducers: {
+    onLogin: (state, action: PayloadAction<IUserModel>) => {
+      state.selectedUser = action.payload;
+    },
+  },
+});
 
-export const {
-  onLogin,
-} = userSlice.actions;
+export const { onLogin } = userSlice.actions;
 export default userSlice.reducer;

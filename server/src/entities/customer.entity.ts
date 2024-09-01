@@ -1,8 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { FileEntity } from './file.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 
-@Entity()
-export class Customer {
+@Entity({ schema: "nesttest", name: "customers" })
+export class CustomerEntity {
   @PrimaryGeneratedColumn()
   c_id: number;
 

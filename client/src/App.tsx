@@ -1,11 +1,11 @@
-import React from 'react';
-import FileUploader from './components/fileUploader';
-
-const App: React.FC = () => {
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import AppRoutes from "./AppRoutes";
+const App = () => {
   return (
-    <div className="App">
-      <FileUploader />
-    </div>
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
   );
 };
 

@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
-export class User {
+@Entity({ schema: "nesttest", name: "users" })
+export class UserEntity {
   @PrimaryGeneratedColumn()
   u_id: number;
 
